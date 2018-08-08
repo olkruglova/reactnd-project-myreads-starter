@@ -13,7 +13,7 @@ class Search extends Component {
 
       static propTypes = {
         onChange: PropTypes.func.isRequired,
-        history: PropTypes.object.isRequired
+        myBooks: PropTypes.array.isRequired
       }
 
       handleChange = (event) => {
@@ -29,9 +29,11 @@ class Search extends Component {
         if(val.length !== 0) {
           BooksAPI.search(val,10).then((books)=>{
             if (books.length>0) {
-              this.setState(()=>{
+                books = books.filter((book) => (book.imageLinks))
+                books = this.changeBookShelf(books)
+            this.setState(()=>{
                 return {
-                  Books:books.filter((book)=>(book.imageLinks))
+                  Books:books
                 }
               })
             }
@@ -45,9 +47,24 @@ class Search extends Component {
           })
         }
       }
+
+      changeBookShelf = (books) => {
+        let all_Books = this.props.myBooks
+        for (let book of books) {
+          book.shelf = "none"
+        }
+         for (let book of books) {
+          for (let b of all_Books) {
+            if (b.id === book.id) {
+              book.shelf = b.shelf
+            }
+          }
+        }
+        return books
+      }
+
        add_book = (book, shelf) => {
         this.props.onChange(book,shelf)
-        this.props.history.push('/')
       }
 
   render () {

@@ -46,13 +46,13 @@ class BooksApp extends React.Component {
             )}/>
           <Route
           exact path="/search"
-            render={({history})=> (
-              <Search
-                onChange={this.update_books_details}
-                history={history}
+          render={({history}) =>(
+            <Search
+              onChange={this.update_books_details}
+              myBooks={this.state.Books}
               />
-            )}/>
-
+            )}
+          />
       </div>
     )
   }
