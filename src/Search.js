@@ -25,6 +25,7 @@ class Search extends Component {
         })
         this.search_books(value)
       }
+
        search_books = (val)=> {
         if(val.length !== 0) {
           BooksAPI.search(val,10).then((books)=>{
@@ -78,7 +79,7 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {this.state.query.length>0 && this.state.Books.map((book,index)=>(
+            {this.state.query.length>0 && this.state.Books.map((book,index)=>(
               <Book
                 book={book}
                 key={index}
