@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {PropTypes} from 'prop-types'
+import { PropTypes } from 'prop-types'
 
 class Book extends Component {
 
@@ -20,7 +20,8 @@ change_bookShelf = (e) => {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url("${ book.imageLinks.thumbnail }")' }}></div>
+            <div className="book-cover"
+              style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
             <div className="book-shelf-changer">
               <select onChange={this.change_bookShelf} value = {book.shelf}>
                 <option value="none" disabled>Move to...</option>
