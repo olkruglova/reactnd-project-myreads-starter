@@ -7,7 +7,6 @@ import Search from './Search'
 
 class BooksApp extends React.Component {
   state = {
-    showSearchPage: false,
     Books: []
   }
     componentDidMount(){

@@ -26,26 +26,17 @@ class Search extends Component {
         this.search_books(value)
       }
 
-       search_books = (val)=> {
-        if(val.length !== 0) {
-          BooksAPI.search(val,10).then((books)=>{
-            if (books.length>0) {
-                books = books.filter((book) => (book.imageLinks))
-                books = this.changeBookShelf(books)
-                books.shelf = "none"
-            this.setState(()=>{
-                return {
-                  books:books               }
-              })
+      search_books = (val) => {
+        if(val) {
+          BooksAPI.search(val).then(books => {
+            if(!books || books.hasOwnProperty('error')) {
+              this.setState ({ books: [] })
+            } else {
+              this.setState({ books: books })
             }
           })
-        }
-        else
-        {
-          this.setState({
-            books: [],
-            query: ''
-          })
+        } else {
+          this.setState({ book: [] })
         }
       }
 
