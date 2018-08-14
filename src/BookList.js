@@ -20,20 +20,20 @@ class BookList extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <div> 
+          <div>
             <Shelf
                 books={books.filter((book)=>(
                     book.shelf === "currentlyReading"
                 ))}
                 title = "Currently Reading"
                 onChangeShelf={this.props.onChange}/>
-                <Shelf books={books.filter((book)=>(
-                    book.shelf === "read"
+            <Shelf books={books.filter((book)=>(
+                book.shelf === "read"
                 ))}
                 title = "Read"
                 onChangeShelf={this.props.onChange}/>
-                <Shelf books={books.filter((book)=>(
-                    book.shelf === "wantToRead"
+            <Shelf books={books.filter((book)=>(
+                book.shelf === "wantToRead"
                 ))}
                 title = "Want to Read"
                 onChangeShelf={this.props.onChange}

@@ -7,7 +7,7 @@ import {PropTypes} from 'prop-types'
 class Search extends Component {
 
     state = {
-        Books: [],
+        books: [],
         query: ''
       }
 
@@ -17,7 +17,7 @@ class Search extends Component {
       }
 
       handleChange = (event) => {
-        var value = event.target.value
+        let value = event.target.value
         this.setState(() => {
           return {
             query: value
@@ -32,10 +32,10 @@ class Search extends Component {
             if (books.length>0) {
                 books = books.filter((book) => (book.imageLinks))
                 books = this.changeBookShelf(books)
+                books.shelf = "none"
             this.setState(()=>{
                 return {
-                  Books:books
-                }
+                  books:books               }
               })
             }
           })
@@ -43,7 +43,7 @@ class Search extends Component {
         else
         {
           this.setState({
-            Books: [],
+            books: [],
             query: ''
           })
         }
@@ -79,7 +79,7 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.query.length>0 && this.state.Books.map((book,index)=>(
+            {this.state.query.length>0 && this.state.books.map((book,index)=>(
               <Book
                 book={book}
                 key={index}
